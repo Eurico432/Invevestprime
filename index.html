@@ -1,78 +1,330 @@
 <!DOCTYPE html>
-<html lang="pt-AO">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InvestPrime AO — Invista hoje, colha lucros amanhã.</title>
+<title>InvestPrime</title>
 <style>
-:root{
-  --navy:#0A1F44; --gold:#F5B301; --white:#FFFFFF; --gray:#F4F6FA;
-  --gray-2:#e4e8f0; --text:#1a2233; --muted:#6b7691;
-  --danger:#e74c3c; --ok:#27ae60; --warn:#f39c12;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,sans-serif;background:var(--gray);color:var(--text)}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none}
-.btn{padding:10px 18px;border-radius:10px;font-weight:600;font-size:.9rem;display:inline-flex;align-items:center;gap:6px;transition:.2s}
-.btn-primary{background:var(--navy);color:#fff}
-.btn-gold{background:var(--gold);color:var(--navy)}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--gray-2)}
-.btn-danger{background:var(--danger);color:#fff}
-.btn-ok{background:var(--ok);color:#fff}
-.btn-sm{padding:6px 12px;font-size:.8rem}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--gray-2);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy)}
-.shield{width:36px;height:40px;background:var(--navy);clip-path:polygon(50% 0,100% 15%,100% 70%,50% 100%,0 70%,0 15%);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900}
-.nav-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body { background-color: #f4f4f9; padding-bottom: 80px; min-height: 100vh; }
+.tela { display: none; }
+.tela.ativa { display: block; }
+header { background-color: #0A1F44; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+header h1 { font-size: 18px; }
+header button { background: #d32f2f; color: white; border: none; padding: 8px 12px; border-radius: 5px; font-size: 12px; }
+.container { padding: 20px; max-width: 700px; margin: 0 auto; }
+.form-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 420px; margin: 40px auto; }
+.form-box h2 { text-align: center; color: #0A1F44; margin-bottom: 20px; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-size: 14px; color: #333; margin-bottom: 5px; font-weight: bold; }
+.form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; }
+.btn-principal { width: 100%; padding: 12px; background-color: #0A1F44; color: white; border: none; border-radius: 5px; font-size: 16px; margin-top: 10px; }
+.link-troca { text-align: center; margin-top: 15px; font-size: 14px; color: #555; }
+.link-troca a { color: #0A1F44; font-weight: bold; cursor: pointer; }
+.msg { display: none; padding: 10px; margin-bottom: 15px; border-radius: 5px; font-size: 14px; text-align: center; }
+.msg.error { background: #fdecea; color: #d32f2f; border: 1px solid #d32f2f; }
+.msg.success { background: #e8f5e9; color: #2e7d32; border: 1px solid #2e7d32; }
+.card-saldo { background: linear-gradient(135deg, #0A1F44, #1a3a6b); color: white; padding: 25px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
+.card-saldo p { font-size: 14px; opacity: 0.8; margin-bottom: 5px; }
+.card-saldo h2 { font-size: 32px; margin-bottom: 15px; }
+.btn-depositar { background: #25D366; color: white; border: none; padding: 12px 25px; border-radius: 25px; font-size: 16px; font-weight: bold; width: 100%; }
+.acoes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+.acao-btn { background: white; padding: 20px; border-radius: 10px; text-align: center; cursor: pointer; border: 1px solid #eee; }
+.acao-btn span { font-size: 28px; display: block; margin-bottom: 8px; }
+.acao-btn p { font-size: 14px; font-weight: bold; color: #333; }
+h3 { color: #0A1F44; margin-bottom: 15px; font-size: 18px; }
+.plano-card { background: white; padding: 15px; border-radius: 10px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #0A1F44; }
+.plano-info h4 { font-size: 16px; color: #333; margin-bottom: 5px; }
+.plano-info p { font-size: 13px; color: #666; }
+.plano-info .rendimento { color: #2e7d32; font-weight: bold; font-size: 14px; margin-top: 5px; }
+.plano-card button { background: #0A1F44; color: white; border: none; padding: 8px 15px; border-radius: 5px; font-size: 13px; }
+.admin-panel { background: #fff3e0; border: 1px solid #ffb74d; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+.admin-panel h3 { color: #e65100; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
+.admin-table th, .admin-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+.admin-table th { background: #0A1F44; color: white; }
+.bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 10px 0; z-index: 100; }
+.nav-item { text-align: center; font-size: 11px; color: #888; flex: 1; }
+.nav-item span { display: block; font-size: 20px; margin-bottom: 3px; }
+.nav-item.active { color: #0A1F44; font-weight: bold; }
+.btn-whatsapp { background: #25D366; color: white; border: none; padding: 12px; border-radius: 5px; font-size: 16px; width: 100%; margin-top: 15px; }
+.info-box { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 12px; border-radius: 5px; margin-bottom: 15px; font-size: 14px; color: #0d47a1; }
 </style>
 </head>
 <body>
 
-<div id="app"></div>
-<div id="modalRoot"></div>
-<div id="toast" style="position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:14px 20px;border-radius:10px;transform:translateY(100px);opacity:0;transition:.3s;z-index:200"></div>
+<div id="telaAuth" class="tela ativa">
+    <div class="form-box">
+        <div id="mensagemAuth" class="msg"></div>
+        <div id="divCadastro">
+            <h2>Criar Conta</h2>
+            <form id="formCadastro">
+                <div class="form-group"><label>Nome Completo:</label><input type="text" id="r_name" placeholder="Seu nome"></div>
+                <div class="form-group"><label>E-mail:</label><input type="email" id="r_email" placeholder="Seu e-mail"></div>
+                <div class="form-group"><label>Telefone (WhatsApp):</label><input type="tel" id="r_tel" placeholder="933798228"></div>
+                <div class="form-group"><label>Senha:</label><input type="password" id="r_pass" placeholder="Mínimo 6 caracteres"></div>
+                <div class="form-group"><label>Código de Convite:</label><input type="text" id="r_code" placeholder="Código"></div>
+                <button type="submit" class="btn-principal">Cadastrar</button>
+            </form>
+            <div class="link-troca">Já tem conta? <a onclick="trocarTelaAuth('login')">Acessar Conta</a></div>
+        </div>
+        <div id="divLogin" style="display:none;">
+            <h2>Acessar Conta</h2>
+            <form id="formLogin">
+                <div class="form-group"><label>E-mail:</label><input type="email" id="l_email" placeholder="Seu e-mail"></div>
+                <div class="form-group"><label>Senha:</label><input type="password" id="l_pass" placeholder="Sua senha"></div>
+                <button type="submit" class="btn-principal">Entrar</button>
+            </form>
+            <div class="link-troca">Não tem conta? <a onclick="trocarTelaAuth('cadastro')">Criar Conta</a></div>
+        </div>
+        <a href="https://chat.whatsapp.com/DPzcJjesCja6jBk8PfC2N9" target="_blank" style="text-decoration:none;">
+            <button class="btn-whatsapp">💬 Grupo WhatsApp</button>
+        </a>
+    </div>
+</div>
+
+<div id="telaApp" class="tela">
+    <header>
+        <h1 id="boasVindas">Olá!</h1>
+        <button onclick="sair()">Sair</button>
+    </header>
+    <div class="container">
+        <div id="mensagemApp" class="msg"></div>
+        <div id="adminPanel" class="admin-panel" style="display:none;">
+            <h3>👑 Painel do Administrador</h3>
+            <div style="overflow-x:auto;">
+                <table class="admin-table">
+                    <thead><tr><th>Nome</th><th>E-mail</th><th>Telefone</th><th>Saldo</th><th>Investido</th></tr></thead>
+                    <tbody id="corpoTabelaAdmin"></tbody>
+                </table>
+            </div>
+            <hr style="margin:15px 0;border:none;border-top:1px solid #ffb74d;">
+            <h3 style="font-size:15px;">💰 Ajustar Saldo</h3>
+            <div class="form-group"><label style="font-size:13px;">Usuário:</label><select id="adminSelectUser"></select></div>
+            <div class="form-group"><label style="font-size:13px;">Valor (+ ou -):</label><input type="number" id="adminAdjustValue" placeholder="Ex: 50000"></div>
+            <button class="btn-principal" onclick="adminAjustarSaldo()" style="background:#e65100;">Aplicar Ajuste</button>
+        </div>
+        <div class="card-saldo">
+            <p>Saldo Disponível</p>
+            <h2 id="saldoDisplay">Kz 0,00</h2>
+            <button class="btn-depositar" onclick="abrirDeposito()">➕ Depositar Agora</button>
+        </div>
+        <div class="acoes-grid">
+            <div class="acao-btn" onclick="abrirDeposito()"><span>💰</span><p>Depositar</p></div>
+            <div class="acao-btn" onclick="abrirLevantamento()"><span>🏧</span><p>Levantamento</p></div>
+        </div>
+        <h3>💼 Meus Investimentos Ativos</h3>
+        <div id="listaMeusInvestimentos"></div>
+        <h3 style="margin-top:25px;">📈 Planos de Investimento</h3>
+        <div id="listaPlanos"></div>
+    </div>
+    <div class="bottom-nav">
+        <div class="nav-item active"><span>🏠</span>Início</div>
+        <div class="nav-item"><span>📊</span>Histórico</div>
+        <div class="nav-item"><span>👤</span>Perfil</div>
+    </div>
+</div>
 
 <script>
-const LS_KEY='investprime_ao_v1';
-const DAILY_RATE=0.023;
+var CODIGO_CONVITE_MESTRE = "PRIMEIRO2026";
+var ADMINS = ["933798228", "955748798"];
+var usuarios = JSON.parse(localStorage.getItem('investprime_usuarios')) || [];
 
-const seedPlans=()=>{const p=[];let v=5000,id=1;while(v<180000){p.push({id:id++,valor_kz:v});v+=6000;}p.push({id:id++,valor_kz:180000});return p;};
-
-function nowISO(){return new Date().toISOString();}
-function hash(s){let h=0;for(let i=0;i<s.length;i++){h=(h<<5)-h+s.charCodeAt(i);h|=0;}return 'd$'+Math.abs(h).toString(16);}
-
-const defaultDB=()=>({
-  users:[{id:1,nome_completo:'Administrador',email:'admin@investprimeao.com',telefone:'933798228',senha_hash:hash('admin123'),codigo_convite:'IP-ADMIN',convidado_por:null,saldo:0,total_investido:0,total_lucro:0,total_levantado:0,is_admin:true,is_blocked:false,created_at:nowISO()}],
-  plans:seedPlans(),
-  investments:[],deposits:[],withdrawals:[],referrals:[],transactions:[],
-  notifications:[{id:1,user_id:null,titulo:'Bem-vindo à InvestPrime AO',mensagem:'Plataforma em demonstração. Nenhum retorno é garantido.',lida:false,created_at:nowISO()}],
-  settings:{deposit_open:'07:00',deposit_close:'21:45',withdraw_open:'11:00',withdraw_close:'18:00',shutdown_date:'2028-11-27',support:['933 798 228','955 748 798'],paypay_ref:'944478303',iban:'005500004565120910147',withdraw_fee_pct:9},
-  _seq:{users:2,investments:1,deposits:1,withdrawals:1,referrals:1,transactions:1,notifications:2}
+function salvar() { localStorage.setItem('investprime_usuarios', JSON.stringify(usuarios)); }
+function trocarTelaAuth(tela) {
+    document.getElementById('divCadastro').style.display = (tela === 'cadastro') ? 'block' : 'none';
+    document.getElementById('divLogin').style.display = (tela === 'login') ? 'block' : 'none';
+    document.getElementById('mensagemAuth').style.display = 'none';
+}
+function entrarNoApp(usuario) {
+    document.getElementById('telaAuth').classList.remove('ativa');
+    document.getElementById('telaApp').classList.add('ativa');
+    document.getElementById('boasVindas').textContent = 'Olá, ' + usuario.nome + '!';
+    if (usuario.admin) {
+        document.getElementById('adminPanel').style.display = 'block';
+        renderizarTabelaAdmin();
+        renderizarSelectAdmin();
+    } else {
+        document.getElementById('adminPanel').style.display = 'none';
+    }
+    renderizarPlanos();
+    renderizarMeusInvestimentos();
+    atualizarSaldoDisplay(usuario);
+}
+function sair() {
+    window.usuarioLogado = null;
+    document.getElementById('telaAuth').classList.add('ativa');
+    document.getElementById('telaApp').classList.remove('ativa');
+    document.getElementById('formLogin').reset();
+}
+function mostrarMsg(id, texto, tipo) {
+    var el = document.getElementById(id);
+    el.textContent = texto;
+    el.className = 'msg ' + tipo;
+    el.style.display = 'block';
+    setTimeout(function() { el.style.display = 'none'; }, 5000);
+}
+function formatarKz(valor) {
+    return 'Kz ' + Number(valor).toLocaleString('pt-AO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function atualizarSaldoDisplay(usuario) {
+    document.getElementById('saldoDisplay').textContent = formatarKz(usuario.saldo);
+}
+document.getElementById('formCadastro').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var nome = document.getElementById('r_name').value.trim();
+    var email = document.getElementById('r_email').value.trim().toLowerCase();
+    var telefone = document.getElementById('r_tel').value.trim();
+    var senha = document.getElementById('r_pass').value;
+    var codigo = document.getElementById('r_code').value.trim().toUpperCase();
+    if (!nome || !email || !telefone || !senha || !codigo) { mostrarMsg('mensagemAuth', 'Preencha tudo.', 'error'); return; }
+    if (senha.length < 6) { mostrarMsg('mensagemAuth', 'Senha mínima 6.', 'error'); return; }
+    if (usuarios.some(function(u) { return u.email === email; })) { mostrarMsg('mensagemAuth', 'E-mail já existe.', 'error'); return; }
+    if (usuarios.some(function(u) { return u.telefone === telefone; })) { mostrarMsg('mensagemAuth', 'Telefone já existe.', 'error'); return; }
+    if (codigo !== CODIGO_CONVITE_MESTRE) { mostrarMsg('mensagemAuth', 'Código inválido.', 'error'); return; }
+    var isAdmin = ADMINS.includes(telefone);
+    usuarios.push({ id: Date.now(), nome: nome, email: email, telefone: telefone, senha: senha, admin: isAdmin, saldo: 0, investido: 0, investimentosAtivos: [] });
+    salvar();
+    mostrarMsg('mensagemAuth', 'Conta criada!', 'success');
+    document.getElementById('formCadastro').reset();
+    setTimeout(function() { trocarTelaAuth('login'); document.getElementById('l_email').value = email; }, 1500);
 });
-
-function loadDB(){try{const r=localStorage.getItem(LS_KEY);if(!r){const d=defaultDB();localStorage.setItem(LS_KEY,JSON.stringify(d));return d;}return JSON.parse(r);}catch(e){return defaultDB();}}
-function saveDB(db){localStorage.setItem(LS_KEY,JSON.stringify(db));}
-let DB=loadDB();const fmtKz=n=>new Intl.NumberFormat('pt-AO',{maximumFractionDigits:0}).format(Math.round(n))+' Kz';
-const fmtDate=d=>new Date(d).toLocaleString('pt-AO');
-const nextId=t=>DB._seq[t]++;
-function randCode(){const a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='IP-';for(let i=0;i<6;i++)s+=a[Math.floor(Math.random()*a.length)];return s;}
-function toast(m,t=''){const e=document.getElementById('toast');e.textContent=m;e.style.transform='translateY(0)';e.style.opacity='1';e.style.background=t==='ok'?'var(--ok)':t==='err'?'var(--danger)':'var(--navy)';clearTimeout(e._t);e._t=setTimeout(()=>{e.style.transform='translateY(100px)';e.style.opacity='0';},2800);}
-function inWindow(o,c,n=new Date()){const[oh,om]=o.split(':').map(Number),[ch,cm]=c.split(':').map(Number);const m=n.getHours()*60+n.getMinutes();return m>=oh*60+om&&m<=ch*60+cm;}
-function depositOpen(){return inWindow(DB.settings.deposit_open,DB.settings.deposit_close);}
-function withdrawOpen(){return inWindow(DB.settings.withdraw_open,DB.settings.withdraw_close);}
-function currentUser(){const id=parseInt(localStorage.getItem('ip_user')||'0',10);return DB.users.find(u=>u.id===id)||null;}
-function setUser(id){if(id)localStorage.setItem('ip_user',String(id));else localStorage.removeItem('ip_user');}
-function txn(uid,t,v,d){DB.transactions.push({id:nextId('transactions'),user_id:uid,tipo:t,valor:v,descricao:d,created_at:nowISO()});}
-function notify(uid,t,m){DB.notifications.push({id:nextId('notifications'),user_id:uid,titulo:t,mensagem:m,lida:false,created_at:nowISO()});}
-function planCalc(v){return{daily:v*DAILY_RATE,total:v*DAILY_RATE*30};}
-function getUserById(id){return DB.users.find(u=>u.id===id)||null;}
-function copyText(t){navigator.clipboard.writeText(t).then(()=>toast('Copiado: '+t,'ok')).catch(()=>toast('Erro ao copiar','err'));}
-function toggleDark(){document.body.classList.toggle('dark');}
-function toggleSidebar(){const s=document.getElementById('sidebar');if(s)s.classList.toggle('open');}
-function openModal(h){document.getElementById('modalRoot').innerHTML='<div class="modal-overlay" onclick="if(event.target===this)closeModal()" style="position:fixed;inset:0;background:rgba(10,31,68,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:100"><div class="modal" style="background:#fff;border-radius:16px;padding:24px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto">'+h+'</div></div>';}
-function closeModal(){document.getElementById('modalRoot').innerHTML='';}
-function openTerms(){openModal('<h3>Termos & Condições</h3><p style="font-size:.88rem;line-height:1.6;color:#6b7691">A InvestPrime AO é uma plataforma demonstrativa. Nenhum retorno é garantido. Os valores (2,3%/dia) são referências matemáticas, não promessas. Investir envolve risco.</p><div style="text-align:right;margin-top:20px"><button class="btn btn-primary" onclick="closeModal()">Entendido</button></div>');}
-function openPrivacy(){openModal('<h3>Política de Privacidade</h3><p style="font-size:.88rem;line-height:1.6;color:#6b7691">Os dados fornecidos são usados apenas para gestão da conta nesta demonstração.</p><div style="text-align:right;margin-top:20px"><button class="btn btn-primary" onclick="closeModal()">Entendido</button></div>');}
-function logout(){setUser(null);toast('Sessão terminada.');navigate('landing');}
+document.getElementById('formLogin').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var email = document.getElementById('l_email').value.trim().toLowerCase();
+    var senha = document.getElementById('l_pass').value;
+    var usuario = usuarios.find(function(u) { return u.email === email && u.senha === senha; });
+    if (!usuario) { mostrarMsg('mensagemAuth', 'Dados incorretos.', 'error'); return; }
+    window.usuarioLogado = usuario;
+    entrarNoApp(usuario);
+});
+function renderizarTabelaAdmin() {
+    var tbody = document.getElementById('corpoTabelaAdmin');
+    tbody.innerHTML = '';
+    usuarios.forEach(function(u) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + u.nome + '</td><td>' + u.email + '</td><td>' + u.telefone + '</td><td>' + formatarKz(u.saldo) + '</td><td>' + formatarKz(u.investido) + '</td>';
+        tbody.appendChild(tr);
+    });
+}
+function renderizarSelectAdmin() {
+    var sel = document.getElementById('adminSelectUser');
+    sel.innerHTML = '<option value="">-- Selecione --</option>';
+    usuarios.forEach(function(u) {
+        var opt = document.createElement('option');
+        opt.value = u.id;
+        opt.textContent = u.nome + ' (' + u.email + ') — ' + formatarKz(u.saldo);
+        sel.appendChild(opt);
+    });
+}
+function adminAjustarSaldo() {
+    var userId = document.getElementById('adminSelectUser').value;
+    var valor = parseFloat(document.getElementById('adminAdjustValue').value);
+    if (!userId || isNaN(valor) || valor === 0) { alert('Dados inválidos.'); return; }
+    var u = usuarios.find(function(x) { return x.id == userId; });
+    if (!u) return;
+    if (u.saldo + valor < 0) { alert('Saldo negativo.'); return; }
+    u.saldo += valor;
+    salvar();
+    renderizarTabelaAdmin();
+    renderizarSelectAdmin();
+    if (window.usuarioLogado && window.usuarioLogado.id == u.id) atualizarSaldoDisplay(window.usuarioLogado);
+    alert('Feito! Novo saldo: ' + formatarKz(u.saldo));
+}
+var planosDisponiveis = [
+    { nome: 'Bronze', valor: 10000 },
+    { nome: 'Prata', valor: 25000 },
+    { nome: 'Ouro', valor: 35000 },
+    { nome: 'Platina', valor: 55000 },
+    { nome: 'Diamante', valor: 150000 },
+    { nome: 'Mestre', valor: 300000 },
+    { nome: 'Lendário', valor: 600000 }
+];
+function calcularRetorno(valor) {
+    if (valor < 40000) return { retorno: Math.round(valor * 2.2), prazo: 30 };
+    return { retorno: valor * 2, prazo: 60 };
+}
+function renderizarPlanos() {
+    var container = document.getElementById('listaPlanos');
+    if (!container) return;
+    container.innerHTML = '';
+    planosDisponiveis.forEach(function(p) {
+        var info = calcularRetorno(p.valor);
+        var lucro = info.retorno - p.valor;
+        var card = document.createElement('div');
+        card.className = 'plano-card';
+        card.innerHTML = '<div class="plano-info"><h4>Plano ' + p.nome + '</h4><p>Investimento: ' + formatarKz(p.valor) + '</p><div class="rendimento">Retorno: ' + formatarKz(info.retorno) + ' (lucro ' + formatarKz(lucro) + ') em ' + info.prazo + ' dias</div></div><button onclick="investir(\'' + p.nome + '\', ' + p.valor + ', ' + info.retorno + ', ' + info.prazo + ')">Investir</button>';
+        container.appendChild(card);
+    });
+}
+function investir(nome, valor, retornoTotal, prazo) {
+    var u = window.usuarioLogado;
+    if (!u) return;
+    if (u.saldo < valor) { mostrarMsg('mensagemApp', 'Saldo insuficiente.', 'error'); return; }
+    if (confirm('Confirmar?\nPlano: ' + nome + '\nValor: ' + formatarKz(valor) + '\nRetorno: ' + formatarKz(retornoTotal) + '\nPrazo: ' + prazo + ' dias')) {
+        u.saldo -= valor;
+        u.investido += valor;
+        var hoje = new Date();
+        var venc = new Date(hoje.getTime() + prazo * 24 * 60 * 60 * 1000);
+        u.investimentosAtivos.push({ id: Date.now(), plano: nome, valor: valor, retorno: retornoTotal, dataInicio: hoje.toLocaleDateString('pt-BR'), dataVencimento: venc.toLocaleDateString('pt-BR'), prazo: prazo });
+        salvar();
+        atualizarSaldoDisplay(u);
+        renderizarMeusInvestimentos();
+        renderizarTabelaAdmin();
+        renderizarSelectAdmin();
+        mostrarMsg('mensagemApp', 'Investimento feito!', 'success');
+    }
+}
+function renderizarMeusInvestimentos() {
+    var u = window.usuarioLogado;
+    var container = document.getElementById('listaMeusInvestimentos');
+    if (!container) return;
+    if (!u || !u.investimentosAtivos || u.investimentosAtivos.length === 0) {
+        container.innerHTML = '<div class="info-box">Sem investimentos ativos.</div>';
+        return;
+    }
+    container.innerHTML = '';
+    u.investimentosAtivos.forEach(function(inv) {
+        var div = document.createElement('div');
+        div.className = 'plano-card';
+        div.style.borderLeftColor = '#25D366';
+        div.innerHTML = '<div class="plano-info"><h4>' + inv.plano + '</h4><p>Investido: ' + formatarKz(inv.valor) + '</p><p>Início: ' + inv.dataInicio + ' · Vence: ' + inv.dataVencimento + '</p><div class="rendimento">Retorno: ' + formatarKz(inv.retorno) + '</div></div>';
+        container.appendChild(div);
+    });
+}
+function abrirDeposito() {
+    var u = window.usuarioLogado;
+    if (!u) return;
+    var valor = parseFloat(prompt('Valor do depósito (Kz):'));
+    if (isNaN(valor) || valor < 5000) { mostrarMsg('mensagemApp', 'Mínimo 5.000 Kz.', 'error'); return; }
+    u.saldo += valor;
+    salvar();
+    atualizarSaldoDisplay(u);
+    renderizarTabelaAdmin();
+    renderizarSelectAdmin();
+    mostrarMsg('mensagemApp', 'Depósito feito!', 'success');
+}
+function abrirLevantamento() {
+    var u = window.usuarioLogado;
+    if (!u) return;
+    if (u.saldo <= 0) { mostrarMsg('mensagemApp', 'Saldo zero.', 'error'); return; }
+    var valor = parseFloat(prompt('Valor do levantamento (Kz):\nDisponível: ' + formatarKz(u.saldo)));
+    if (isNaN(valor) || valor <= 0 || valor > u.saldo) { mostrarMsg('mensagemApp', 'Valor inválido.', 'error'); return; }
+    var liquido = valor - (valor * 0.09);
+    if (!confirm('Taxa 9%: ' + formatarKz(valor * 0.09) + '\nLíquido: ' + formatarKz(liquido) + '\nConfirmar?')) return;
+    u.saldo -= valor;
+    salvar();
+    atualizarSaldoDisplay(u);
+    renderizarTabelaAdmin();
+    renderizarSelectAdmin();
+    mostrarMsg('mensagemApp', 'Levantamento feito! Líquido: ' + formatarKz(liquido), 'success');
+}
+(function init() {
+    if (!usuarios.some(function(u) { return u.admin; })) {
+        usuarios.push({ id: Date.now(), nome: 'Admin Master', email: 'admin@investprime.com', telefone: '933798228', senha: '123456', admin: true, saldo: 1000000, investido: 0, investimentosAtivos: [] });
+        salvar();
+    }
+})();
+</script>
+</body>
+</html>
