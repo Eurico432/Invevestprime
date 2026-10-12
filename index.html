@@ -3,115 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InvestPrime</title>
+<title>InvestProAO</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif}
-body{background:#0a0505;color:#fff;min-height:100vh;padding-bottom:80px}
+body{background:#f0f5ff;color:#0a1f44;min-height:100vh;padding-bottom:80px}
 .tela{display:none}.tela.ativa{display:block}
-.form-box{background:#1e1010;padding:30px 22px;border-radius:14px;margin:30px 16px;border:1px solid #2e1818}
-.form-box h2{text-align:center;color:#fff;margin-bottom:22px;font-size:22px}
+.form-box{background:#fff;padding:30px 22px;border-radius:14px;margin:30px 16px;border:1px solid #dbe6f5;box-shadow:0 4px 20px rgba(10,31,68,.06)}
+.form-box h2{text-align:center;color:#0a1f44;margin-bottom:22px;font-size:22px}
 .form-box .logo{text-align:center;margin-bottom:15px;font-size:40px}
 .form-group{margin-bottom:14px}
-.form-group label{display:block;font-size:13px;color:#a89696;margin-bottom:6px;font-weight:600}
-.form-group input,.form-group select{width:100%;padding:12px;border:1px solid #2e1818;border-radius:8px;font-size:14px;background:#140808;color:#fff}
-.form-group input::placeholder{color:#6b5a5a}
-.btn-principal{width:100%;padding:13px;background:linear-gradient(135deg,#b30000,#7a0000);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:bold;cursor:pointer;margin-top:8px}
-.btn-principal:active{opacity:.85}
+.form-group label{display:block;font-size:13px;color:#5a6b85;margin-bottom:6px;font-weight:600}
+.form-group input,.form-group select{width:100%;padding:12px;border:1px solid #dbe6f5;border-radius:8px;font-size:14px;background:#f7faff;color:#0a1f44}
+.form-group input::placeholder{color:#98a8bd}
+.btn-principal{width:100%;padding:13px;background:linear-gradient(135deg,#1976d2,#0a4fa0);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:bold;cursor:pointer;margin-top:8px}
 .btn-principal:disabled{opacity:.5;cursor:not-allowed}
-.link-troca{text-align:center;margin-top:15px;font-size:13px;color:#a89696}
-.link-troca a{color:#ff3b3b;font-weight:bold;cursor:pointer}
+.link-troca{text-align:center;margin-top:15px;font-size:13px;color:#5a6b85}
+.link-troca a{color:#1976d2;font-weight:bold;cursor:pointer}
 .msg{display:none;padding:10px;margin-bottom:14px;border-radius:6px;font-size:13px;text-align:center}
-.msg.error{background:#3d0a0a;color:#ff8080;border:1px solid #7a0000}
-.msg.success{background:#0a3d1a;color:#80ff80;border:1px solid #1a7a3a}
+.msg.error{background:#ffeaea;color:#c62828;border:1px solid #c62828}
+.msg.success{background:#e8f5e9;color:#2e7d32;border:1px solid #2e7d32}
 .btn-whatsapp{background:#25D366;color:#fff;border:none;padding:13px;border-radius:8px;font-size:15px;cursor:pointer;width:100%;margin-top:14px;font-weight:bold}
-.loading{text-align:center;padding:40px;font-size:16px;color:#a89696}
-header{background:linear-gradient(135deg,#b30000,#7a0000);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.loading{text-align:center;padding:40px;font-size:16px;color:#5a6b85}
+header{background:linear-gradient(135deg,#1976d2,#0a4fa0);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;color:#fff}
 header .brand{display:flex;align-items:center;gap:10px}
-header .brand-logo{width:34px;height:34px;border-radius:50%;background:#fff;color:#b30000;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px}
+header .brand-logo{width:34px;height:34px;border-radius:50%;background:#fff;color:#1976d2;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px}
 header h1{font-size:16px;font-weight:700}
-header .bell{background:rgba(0,0,0,.3);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;position:relative}
-header .bell .dot{position:absolute;top:2px;right:2px;width:12px;height:12px;background:#fff;border-radius:50%;color:#000;font-size:8px;display:flex;align-items:center;justify-content:center;font-weight:bold}
+header .bell{background:rgba(255,255,255,.2);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;position:relative}
+header .bell .dot{position:absolute;top:2px;right:2px;width:12px;height:12px;background:#fff;border-radius:50%;color:#1976d2;font-size:8px;display:flex;align-items:center;justify-content:center;font-weight:bold}
 .container{padding:18px 16px;max-width:520px;margin:0 auto}
-.card{background:#1e1010;border-radius:14px;padding:18px;margin-bottom:14px;border:1px solid #2e1818}
-.card-gradient{background:linear-gradient(135deg,#b30000,#7a0000);border:none}
-.card-saldo .label{font-size:13px;opacity:.85}
+.card{background:#fff;border-radius:14px;padding:18px;margin-bottom:14px;border:1px solid #dbe6f5;box-shadow:0 2px 10px rgba(10,31,68,.04)}
+.card-gradient{background:linear-gradient(135deg,#1976d2,#0a4fa0);border:none;color:#fff}
+.card-gradient .label{color:#d6e8fa}
+.card-gradient .valor{color:#fff}
+.card-saldo .label{font-size:13px;opacity:.9}
 .card-saldo .valor{font-size:30px;font-weight:800;margin:6px 0 12px}
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
-.stat-box{background:rgba(0,0,0,.35);border-radius:10px;padding:10px 12px}
-.stat-box .lbl{font-size:11px;opacity:.75}
+.stat-box{background:rgba(255,255,255,.18);border-radius:10px;padding:10px 12px}
+.stat-box .lbl{font-size:11px;opacity:.85}
 .stat-box .val{font-size:15px;font-weight:700;margin-top:3px}
 .acoes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
-.acao-btn{background:#1e1010;padding:14px 6px;border-radius:12px;text-align:center;border:1px solid #2e1818;cursor:pointer}
-.acao-btn .ico{font-size:22px;display:block;margin-bottom:6px;color:#ff3b3b}
-.acao-btn p{font-size:11px;color:#fff;font-weight:600}
-.tarefa{display:flex;align-items:center;gap:12px;background:#1e1010;border-radius:14px;padding:14px;border:1px solid #2e1818;margin-bottom:20px}
-.tarefa .ico{width:42px;height:42px;border-radius:50%;background:rgba(255,59,59,.15);color:#ff3b3b;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.acao-btn{background:#fff;padding:14px 6px;border-radius:12px;text-align:center;border:1px solid #dbe6f5;cursor:pointer}
+.acao-btn .ico{font-size:22px;display:block;margin-bottom:6px;color:#1976d2}
+.acao-btn p{font-size:11px;color:#0a1f44;font-weight:600}
+.tarefa{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:14px;border:1px solid #dbe6f5;margin-bottom:20px}
+.tarefa .ico{width:42px;height:42px;border-radius:50%;background:#e3f0fd;color:#1976d2;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .tarefa .info{flex:1}
 .tarefa .info h4{font-size:14px;margin-bottom:3px}
-.tarefa .info p{font-size:12px;color:#a89696}
-.tarefa button{background:#b30000;color:#fff;border:none;padding:9px 14px;border-radius:8px;font-size:12px;font-weight:bold;cursor:pointer}
-h3.section-title{font-size:17px;margin:22px 0 12px}
-.plano-card{background:#1e1010;border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid #2e1818}
+.tarefa .info p{font-size:12px;color:#5a6b85}
+.tarefa button{background:#1976d2;color:#fff;border:none;padding:9px 14px;border-radius:8px;font-size:12px;font-weight:bold;cursor:pointer}
+h3.section-title{font-size:17px;margin:22px 0 12px;color:#0a1f44}
+.plano-card{background:#fff;border-radius:14px;padding:16px;margin-bottom:14px;border:1px solid #dbe6f5}
 .plano-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.plano-nivel{font-size:11px;color:#ff3b3b;font-weight:800;letter-spacing:1px}
-.plano-nome{font-size:18px;font-weight:800;margin-top:2px}
-.plano-valor{font-size:15px;font-weight:700;text-align:right}
-.plano-valor small{display:block;font-size:11px;color:#a89696;font-weight:400}
+.plano-nivel{font-size:11px;color:#1976d2;font-weight:800;letter-spacing:1px}
+.plano-nome{font-size:18px;font-weight:800;margin-top:2px;color:#0a1f44}
+.plano-valor{font-size:15px;font-weight:700;text-align:right;color:#0a1f44}
+.plano-valor small{display:block;font-size:11px;color:#5a6b85;font-weight:400}
 .plano-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
-.plano-stat{background:#140808;border-radius:8px;padding:9px;text-align:center}
-.plano-stat .lbl{font-size:10px;color:#a89696}
-.plano-stat .val{font-size:13px;font-weight:700;margin-top:3px}
-.plano-stat .val.green{color:#25D366}
-.plano-btn{width:100%;padding:11px;border-radius:8px;background:linear-gradient(135deg,#b30000,#7a0000);color:#fff;border:none;font-weight:bold;font-size:14px;cursor:pointer}
-.plano-btn:disabled{background:#3a1a1a;color:#7a5a5a;cursor:not-allowed}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#140808;border-top:1px solid #2e1818;display:flex;justify-content:space-around;padding:8px 0 10px;z-index:100}
-.nav-item{text-align:center;font-size:10px;color:#a89696;cursor:pointer;flex:1;padding:4px}
+.plano-stat{background:#f7faff;border-radius:8px;padding:9px;text-align:center}
+.plano-stat .lbl{font-size:10px;color:#5a6b85}
+.plano-stat .val{font-size:13px;font-weight:700;margin-top:3px;color:#0a1f44}
+.plano-stat .val.green{color:#2e7d32}
+.plano-btn{width:100%;padding:11px;border-radius:8px;background:linear-gradient(135deg,#1976d2,#0a4fa0);color:#fff;border:none;font-weight:bold;font-size:14px;cursor:pointer}
+.plano-btn:disabled{background:#e0e8f5;color:#98a8bd;cursor:not-allowed}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #dbe6f5;display:flex;justify-content:space-around;padding:8px 0 10px;z-index:100;box-shadow:0 -2px 10px rgba(10,31,68,.04)}
+.nav-item{text-align:center;font-size:10px;color:#98a8bd;cursor:pointer;flex:1;padding:4px}
 .nav-item .ico{font-size:20px;display:block;margin-bottom:2px}
-.nav-item.active{color:#ff3b3b}
-.perfil-header{text-align:center;padding:20px 0;margin-bottom:14px}
-.perfil-avatar{width:80px;height:80px;border-radius:50%;background:#fff;color:#b30000;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;margin:0 auto 12px}
-.perfil-nome{font-size:20px;font-weight:800}
-.perfil-codigo{font-size:13px;color:#a89696;margin-top:4px}
-.perfil-linha{display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #2e1818;font-size:14px}
+.nav-item.active{color:#1976d2}.perfil-header{text-align:center;padding:20px 0;margin-bottom:14px}
+.perfil-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#1976d2,#0a4fa0);color:#fff;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;margin:0 auto 12px}
+.perfil-nome{font-size:20px;font-weight:800;color:#0a1f44}
+.perfil-codigo{font-size:13px;color:#5a6b85;margin-top:4px}
+.perfil-linha{display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #dbe6f5;font-size:14px}
 .perfil-linha:last-child{border-bottom:none}
-.perfil-linha .lbl{color:#a89696}
-.perfil-linha .val{font-weight:600}
+.perfil-linha .lbl{color:#5a6b85}
+.perfil-linha .val{font-weight:600;color:#0a1f44}
 .btn-full{width:100%;padding:14px;border-radius:10px;border:none;font-size:15px;font-weight:bold;cursor:pointer;margin-bottom:10px}
 .btn-green{background:#25D366;color:#fff}
-.btn-red{background:linear-gradient(135deg,#b30000,#7a0000);color:#fff}
-.upload-area{border:2px dashed #2e1818;border-radius:12px;padding:26px 16px;text-align:center;cursor:pointer;background:#140808;margin-top:6px}
-.upload-area .ico{font-size:30px;color:#ff3b3b;margin-bottom:8px}
-.upload-area p{font-size:13px;color:#a89696}
-.admin-tabela{width:100%;border-collapse:collapse;font-size:11px;background:#1e1010;border-radius:10px;overflow:hidden}
-.admin-tabela th,.admin-tabela td{padding:8px 6px;text-align:left;border-bottom:1px solid #2e1818}
-.admin-tabela th{background:#7a0000;color:#fff;font-weight:600}
-.admin-tabela td{color:#ddd}
-.notice{background:rgba(255,59,59,.1);border-left:3px solid #ff3b3b;padding:10px 12px;border-radius:6px;font-size:12px;color:#ffb0b0;margin-bottom:14px}
-.pay-box{background:#140808;border:1px solid #2e1818;border-radius:10px;padding:14px;margin-bottom:12px}
-.pay-box .titulo{font-size:12px;color:#a89696;margin-bottom:4px}
-.pay-box .valor-grande{font-size:20px;font-weight:800;color:#ff3b3b;letter-spacing:1px}
+.btn-blue{background:linear-gradient(135deg,#1976d2,#0a4fa0);color:#fff}
+.upload-area{border:2px dashed #b8cde6;border-radius:12px;padding:26px 16px;text-align:center;cursor:pointer;background:#f7faff;margin-top:6px}
+.upload-area .ico{font-size:30px;color:#1976d2;margin-bottom:8px}
+.upload-area p{font-size:13px;color:#5a6b85}
+.admin-tabela{width:100%;border-collapse:collapse;font-size:11px;background:#fff;border-radius:10px;overflow:hidden}
+.admin-tabela th,.admin-tabela td{padding:8px 6px;text-align:left;border-bottom:1px solid #dbe6f5}
+.admin-tabela th{background:#0a4fa0;color:#fff;font-weight:600}
+.admin-tabela td{color:#0a1f44}
+.notice{background:#e3f0fd;border-left:3px solid #1976d2;padding:10px 12px;border-radius:6px;font-size:12px;color:#0a4fa0;margin-bottom:14px}
+.pay-box{background:#f7faff;border:1px solid #dbe6f5;border-radius:10px;padding:14px;margin-bottom:12px}
+.pay-box .titulo{font-size:12px;color:#5a6b85;margin-bottom:4px}
+.pay-box .valor-grande{font-size:16px;font-weight:800;color:#1976d2;letter-spacing:.5px;word-break:break-all}
 .pay-box .valor-copiavel{cursor:pointer;user-select:all}
-.card-mini{background:#140808;border-radius:8px;padding:12px;margin-bottom:10px;border:1px solid #2e1818}
-.card-mini .nome{font-weight:700;margin-bottom:4px}
-.card-mini .info{font-size:12px;color:#a89696;margin-bottom:2px}
-.card-mini .acoes{display:flex;gap:8px;margin-top:8px}
-.card-mini .acoes button{flex:1;padding:8px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;font-size:13px}
+.card-mini{background:#f7faff;border-radius:8px;padding:12px;margin-bottom:10px;border:1px solid #dbe6f5}
+.card-mini .nome{font-weight:700;margin-bottom:4px;color:#0a1f44}
+.card-mini .info{font-size:12px;color:#5a6b85;margin-bottom:2px}
+.card-mini .acoes{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.card-mini .acoes button{flex:1;min-width:80px;padding:8px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;font-size:12px}
 .btn-aprovar{background:#25D366;color:#fff}
-.btn-rejeitar{background:#7a0000;color:#fff}
+.btn-rejeitar{background:#c62828;color:#fff}
+.btn-azul{background:#1976d2;color:#fff}
+.btn-cinza{background:#5a6b85;color:#fff}
 </style>
 </head>
 <body>
 
 <div id="telaLoading" class="tela ativa">
     <div class="loading">
-        <div style="font-size:40px;margin-bottom:15px;">🔒</div>
+        <div style="font-size:40px;margin-bottom:15px;">💼</div>
         A carregar...
     </div>
 </div>
 
 <div id="telaAuth" class="tela">
     <div class="form-box">
-        <div class="logo">🔒</div>
+        <div class="logo">💼</div>
         <div id="mensagemAuth" class="msg"></div>
 
         <div id="divCadastro">
@@ -147,7 +149,7 @@ h3.section-title{font-size:17px;margin:22px 0 12px}
     <header>
         <div class="brand">
             <div class="brand-logo" id="headerLogo">I</div>
-            <h1 id="headerNome">InvestPrime</h1>
+            <h1 id="headerNome">InvestProAO</h1>
         </div>
         <div class="bell" onclick="mostrarNotificacoes()">🔔<span class="dot">1</span></div>
     </header>
@@ -160,42 +162,57 @@ h3.section-title{font-size:17px;margin:22px 0 12px}
         <div class="nav-item" data-tab="equipa" onclick="mudarTab('equipa')"><span class="ico">👥</span>Equipa</div>
         <div class="nav-item" data-tab="perfil" onclick="mudarTab('perfil')"><span class="ico">👤</span>Perfil</div>
     </div>
-</div>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+</div><script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
 <script>
-var NOME_PLATAFORMA = 'InvestPrime';
+var NOME_PLATAFORMA = 'InvestProAO';
 var WHATSAPP_GRUPO = 'https://chat.whatsapp.com/DPzcJjesCja6jBk8PfC2N9?s=cl&p=a&mlu=4&ilr=4';
-var ADMIN_EMAIL = 'admin@investprime.com';
-var HORA_SAQUE_INICIO = 11;
-var HORA_SAQUE_FIM = 17;
-var TAXA_SAQUE = 0.15;
-var MIN_SAQUE = 1000;
-var MIN_DEPOSITO = 1000;
+var ADMIN_TELEFONE = '955748798';
+var SITE_URL = 'https://relaxed-crepe-e0fd15.netlify.app';
+var HORA_DEP_INICIO = 6, HORA_DEP_FIM = 23;
+var HORA_SAQ_INICIO = 10, HORA_SAQ_FIM = 16;
+var TAXA_SAQUE = 0.08;
+var MIN_SAQUE = 1500;
+var MIN_DEPOSITO = 1500;
+var BONUS_PCT = 0.05;
 
-var DADOS_PAGAMENTO = {
+var DADOS = {
+    iban1: '005500004565120910147',
+    iban2: '004000000710688610127',
+    titular: 'Eurico Novais',
     entidade: '10116',
-    referencia: '944478303',
-    iban: '005500004565120910147',
-    banco: 'Banco BAI',
-    titular: 'Eurico Novais'
+    referencia: '944478303'
 };
 
-var PLANOS = [
-    { nivel: 'NÍVEL 1', nome: 'VIP 1', valor: 5000,    ganhoDia: 1050,   prazo: 420 },
-    { nivel: 'NÍVEL 2', nome: 'VIP 2', valor: 10000,   ganhoDia: 2100,   prazo: 420 },
-    { nivel: 'NÍVEL 3', nome: 'VIP 3', valor: 25000,   ganhoDia: 5250,   prazo: 420 },
-    { nivel: 'NÍVEL 4', nome: 'VIP 4', valor: 50000,   ganhoDia: 10500,  prazo: 420 },
-    { nivel: 'NÍVEL 5', nome: 'VIP 5', valor: 100000,  ganhoDia: 21000,  prazo: 420 },
-    { nivel: 'NÍVEL 6', nome: 'VIP 6', valor: 250000,  ganhoDia: 52500,  prazo: 420 },
-    { nivel: 'NÍVEL 7', nome: 'VIP 7', valor: 500000,  ganhoDia: 105000, prazo: 420 },
-    { nivel: 'NÍVEL 8', nome: 'VIP 8', valor: 1000000, ganhoDia: 210000, prazo: 420 }
+var PLANOS_30 = [
+    { nome: 'Plano 1',  valor: 5000,   diario: 200,  total: 11000 },
+    { nome: 'Plano 2',  valor: 13000,  diario: 433,  total: 26000 },
+    { nome: 'Plano 3',  valor: 17000,  diario: 566,  total: 34000 },
+    { nome: 'Plano 4',  valor: 25000,  diario: 833,  total: 50000 },
+    { nome: 'Plano 5',  valor: 32000,  diario: 1066, total: 64000 },
+    { nome: 'Plano 6',  valor: 38000,  diario: 1266, total: 76000 },
+    { nome: 'Plano 7',  valor: 43000,  diario: 1433, total: 86000 },
+    { nome: 'Plano 8',  valor: 47000,  diario: 1566, total: 94000 },
+    { nome: 'Plano 9',  valor: 55000,  diario: 1833, total: 110000 },
+    { nome: 'Plano 10', valor: 59000,  diario: 1966, total: 118000 },
+    { nome: 'Plano 11', valor: 65000,  diario: 2166, total: 130000 }
 ];
 
-/* ===== FIREBASE ===== */
+var PLANOS_60 = [
+    { nome: 'Plano 12', valor: 75000,  diario: 1250, total: 150000 },
+    { nome: 'Plano 13', valor: 87000,  diario: 1450, total: 174000 },
+    { nome: 'Plano 14', valor: 95000,  diario: 1583, total: 190000 },
+    { nome: 'Plano 15', valor: 102000, diario: 1700, total: 204000 },
+    { nome: 'Plano 16', valor: 126000, diario: 2100, total: 252000 },
+    { nome: 'Plano 17', valor: 134000, diario: 2233, total: 268000 },
+    { nome: 'Plano 18', valor: 145000, diario: 2416, total: 290000 },
+    { nome: 'Plano 19', valor: 155000, diario: 2583, total: 310000 },
+    { nome: 'Plano 20', valor: 167000, diario: 2783, total: 334000 },
+    { nome: 'Plano 21', valor: 174000, diario: 2900, total: 348000 }
+];
+
 var firebaseConfig = {
   apiKey: "AIzaSyAgFN3P0_UHpKV95i6MeKsY8hf2VIo_Iro",
   authDomain: "investprime-10321.firebaseapp.com",
@@ -215,179 +232,546 @@ var usuarios = [];
 var depositos = [];
 var saques = [];
 
-/* ===== AUXILIARES ===== */
-function formatKz(v) {
-    var n = Number(v) || 0;
-    return n.toLocaleString('pt-AO', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' Kz';
-}
+function formatKz(v){ return (Number(v)||0).toLocaleString('pt-AO',{minimumFractionDigits:2,maximumFractionDigits:2})+' Kz'; }
+function mostrarMsg(txt,tipo){ var el=document.getElementById('mensagemAuth'); if(!el)return; el.textContent=txt; el.className='msg '+tipo; el.style.display='block'; setTimeout(function(){el.style.display='none';},5000); }
+function copiar(txt){ if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){alert('✅ Copiado: '+txt);}).catch(function(){prompt('Copie:',txt);});} else { prompt('Copie:',txt); } }
+function gerarCodigo(){ var c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; var s='IPA'; for(var i=0;i<6;i++) s+=c.charAt(Math.floor(Math.random()*c.length)); return s; }
+function gerarLink(cod){ var c='abcdefghijkmnpqrstuvwxyz23456789'; var s=''; for(var i=0;i<10;i++) s+=c.charAt(Math.floor(Math.random()*c.length)); return SITE_URL+'/?ref='+cod+'&l='+s; }
+function trocarTelaAuth(t){ document.getElementById('divCadastro').style.display=(t==='cadastro')?'block':'none'; document.getElementById('divLogin').style.display=(t==='login')?'block':'none'; document.getElementById('mensagemAuth').style.display='none'; }
+function mostrarTela(id){ var ts=document.querySelectorAll('.tela'); for(var i=0;i<ts.length;i++) ts[i].classList.remove('ativa'); document.getElementById(id).classList.add('ativa'); }function carregarUsuarios(cb){ db.collection('usuarios').get().then(function(s){ usuarios=[]; s.forEach(function(d){ var x=d.data(); x.uid=d.id; usuarios.push(x); }); if(cb)cb(); }).catch(function(){ if(cb)cb(); }); }
+function carregarDepositos(cb){ db.collection('depositos').orderBy('timestamp','desc').limit(200).get().then(function(s){ depositos=[]; s.forEach(function(d){ var x=d.data(); x.docId=d.id; depositos.push(x); }); if(cb)cb(); }).catch(function(){ if(cb)cb(); }); }
+function carregarSaques(cb){ db.collection('saques').orderBy('timestamp','desc').limit(200).get().then(function(s){ saques=[]; s.forEach(function(d){ var x=d.data(); x.docId=d.id; saques.push(x); }); if(cb)cb(); }).catch(function(){ if(cb)cb(); }); }
+function carregarTudo(cb){ carregarUsuarios(function(){ carregarDepositos(function(){ carregarSaques(function(){ if(cb)cb(); }); }); }); }
 
-function mostrarMsg(texto, tipo) {
-    var el = document.getElementById('mensagemAuth');
-    if (!el) return;
-    el.textContent = texto;
-    el.className = 'msg ' + tipo;
-    el.style.display = 'block';
-    setTimeout(function() { el.style.display = 'none'; }, 5000);
-}
-
-function copiar(texto) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(texto).then(function() {
-            alert('✅ Copiado: ' + texto);
-        }).catch(function() { prompt('Copie:', texto); });
-    } else {
-        prompt('Copie:', texto);
-    }
-}
-
-function gerarCodigo() {
-    var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    var s = 'VIP';
-    for (var i = 0; i < 6; i++) s += chars.charAt(Math.floor(Math.random() * chars.length));
-    return s;
-}
-
-function gerarLinkUnico(codigo) {
-    var chars = 'abcdefghijkmnpqrstuvwxyz23456789';
-    var s = '';
-    for (var i = 0; i < 10; i++) s += chars.charAt(Math.floor(Math.random() * chars.length));
-    return 'https://eurico432.github.io/Invevestprime/?ref=' + codigo + '&l=' + s;
-}
-
-function trocarTelaAuth(tela) {
-    document.getElementById('divCadastro').style.display = (tela === 'cadastro') ? 'block' : 'none';
-    document.getElementById('divLogin').style.display = (tela === 'login') ? 'block' : 'none';
-    document.getElementById('mensagemAuth').style.display = 'none';
-}
-
-function mostrarTela(id) {
-    var telas = document.querySelectorAll('.tela');
-    for (var i = 0; i < telas.length; i++) telas[i].classList.remove('ativa');
-    document.getElementById(id).classList.add('ativa');
-}
-
-/* ===== CARREGAR DADOS DO FIRESTORE ===== */
-function carregarUsuarios(callback) {
-    db.collection('usuarios').get().then(function(snap) {
-        usuarios = [];
-        snap.forEach(function(doc) {
-            var d = doc.data();
-            d.uid = doc.id;
-            usuarios.push(d);
-        });
-        if (callback) callback();
-    }).catch(function(e) {
-        console.error('Erro usuarios:', e);
-        if (callback) callback();
-    });
-}
-
-function carregarDepositos(callback) {
-    db.collection('depositos').orderBy('timestamp', 'desc').limit(100).get().then(function(snap) {
-        depositos = [];
-        snap.forEach(function(doc) {
-            var d = doc.data();
-            d.docId = doc.id;
-            depositos.push(d);
-        });
-        if (callback) callback();
-    }).catch(function(e) {
-        console.error('Erro depositos:', e);
-        if (callback) callback();
-    });
-}
-
-function carregarSaques(callback) {
-    db.collection('saques').orderBy('timestamp', 'desc').limit(100).get().then(function(snap) {
-        saques = [];
-        snap.forEach(function(doc) {
-            var d = doc.data();
-            d.docId = doc.id;
-            saques.push(d);
-        });
-        if (callback) callback();
-    }).catch(function(e) {
-        console.error('Erro saques:', e);
-        if (callback) callback();
-    });
-}
-
-function carregarTudo(callback) {
-    carregarUsuarios(function() {
-        carregarDepositos(function() {
-            carregarSaques(function() {
-                if (callback) callback();
-            });
-        });
-    });
-}
-
-/* ===== LOGIN / CADASTRO ===== */
-document.getElementById('formCadastro').addEventListener('submit', function(e) {
+document.getElementById('formCadastro').addEventListener('submit', function(e){
     e.preventDefault();
-    var nome = document.getElementById('r_name').value.trim();
-    var email = document.getElementById('r_email').value.trim().toLowerCase();
-    var telefone = document.getElementById('r_tel').value.trim();
-    var senha = document.getElementById('r_pass').value;
-    var codigo = document.getElementById('r_code').value.trim().toUpperCase();
-
-    if (!nome || !email || !telefone || !senha) { mostrarMsg('Preencha todos os campos.', 'error'); return; }
-    if (senha.length < 6) { mostrarMsg('Senha mínima 6 caracteres.', 'error'); return; }
-    if (email.indexOf('@') === -1) { mostrarMsg('E-mail inválido.', 'error'); return; }
-
-    document.getElementById('btnCadastro').disabled = true;
-    document.getElementById('btnCadastro').textContent = 'A criar...';
-
-    auth.createUserWithEmailAndPassword(email, senha).then(function(cred) {
-        var uid = cred.user.uid;
-        var codigoUnico = gerarCodigo();
-        var isAdmin = (email === ADMIN_EMAIL);
-
-        var dados = {
-            uid: uid,
-            nome: nome,
-            email: email,
-            telefone: telefone,
-            codigoConvite: codigoUnico,
-            linkConvite: gerarLinkUnico(codigoUnico),
-            convidadoPor: codigo || null,
-            admin: isAdmin,
-            saldo: 0,
-            totalDepositado: 0,
-            totalSacado: 0,
-            totalBonus: 0,
-            ganhosHoje: 0,
-            planoAtivo: null,
-            dataRegisto: new Date().toLocaleDateString('pt-BR'),
-            bloqueado: false,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    var nome=document.getElementById('r_name').value.trim();
+    var email=document.getElementById('r_email').value.trim().toLowerCase();
+    var tel=document.getElementById('r_tel').value.trim();
+    var senha=document.getElementById('r_pass').value;
+    var cod=document.getElementById('r_code').value.trim().toUpperCase();
+    if(!nome||!email||!tel||!senha){ mostrarMsg('Preencha todos os campos.','error'); return; }
+    if(senha.length<6){ mostrarMsg('Senha mínima 6 caracteres.','error'); return; }
+    if(email.indexOf('@')===-1){ mostrarMsg('E-mail inválido.','error'); return; }
+    document.getElementById('btnCadastro').disabled=true;
+    document.getElementById('btnCadastro').textContent='A criar...';
+    auth.createUserWithEmailAndPassword(email,senha).then(function(cred){
+        var uid=cred.user.uid;
+        var codigoUnico=gerarCodigo();
+        var isAdmin=(tel===ADMIN_TELEFONE);
+        var dados={
+            uid:uid, nome:nome, email:email, telefone:tel,
+            codigoConvite:codigoUnico, linkConvite:gerarLink(codigoUnico),
+            convidadoPor:cod||null, admin:isAdmin,
+            saldo:0, totalDepositado:0, totalSacado:0, totalBonus:0, ganhosHoje:0, totalGanho:0,
+            planoAtivo:null, dataRegisto:new Date().toLocaleDateString('pt-BR'),
+            bloqueado:false, timestamp:firebase.firestore.FieldValue.serverTimestamp()
         };
-
         return db.collection('usuarios').doc(uid).set(dados);
-    }).then(function() {
-        mostrarMsg('Conta criada! Faça login.', 'success');
+    }).then(function(){
+        mostrarMsg('Conta criada! Faça login.','success');
         document.getElementById('formCadastro').reset();
-        document.getElementById('l_email').value = email;
-        document.getElementById('btnCadastro').disabled = false;
-        document.getElementById('btnCadastro').textContent = 'Criar Conta';
-        setTimeout(function() { trocarTelaAuth('login'); }, 1500);
-    }).catch(function(err) {
-        document.getElementById('btnCadastro').disabled = false;
-        document.getElementById('btnCadastro').textContent = 'Criar Conta';
-        var msg = 'Erro ao criar conta.';
-        if (err.code === 'auth/email-already-in-use') msg = 'Este e-mail já está cadastrado.';
-        else if (err.code === 'auth/weak-password') msg = 'Senha fraca. Use 6+ caracteres.';
-        else if (err.code === 'auth/invalid-email') msg = 'E-mail inválido.';
-        mostrarMsg(msg, 'error');
+        document.getElementById('l_email').value=email;
+        document.getElementById('btnCadastro').disabled=false;
+        document.getElementById('btnCadastro').textContent='Criar Conta';
+        setTimeout(function(){ trocarTelaAuth('login'); },1500);
+    }).catch(function(err){
+        document.getElementById('btnCadastro').disabled=false;
+        document.getElementById('btnCadastro').textContent='Criar Conta';
+        var m='Erro ao criar conta.';
+        if(err.code==='auth/email-already-in-use') m='E-mail já cadastrado.';
+        else if(err.code==='auth/weak-password') m='Senha fraca.';
+        else if(err.code==='auth/invalid-email') m='E-mail inválido.';
+        mostrarMsg(m,'error');
     });
 });
 
-document.getElementById('formLogin').addEventListener('submit', function(e) {
+document.getElementById('formLogin').addEventListener('submit', function(e){
     e.preventDefault();
-    var email = document.getElementById('l_email').value.trim().toLowerCase();
-    var senha = document.getElementById('l_pass').value;
+    var email=document.getElementById('l_email').value.trim().toLowerCase();
+    var senha=document.getElementById('l_pass').value;
+    if(!email||!senha){ mostrarMsg('Preencha tudo.','error'); return; }
+    document.getElementById('btnLogin').disabled=true;
+    document.getElementById('btnLogin').textContent='A entrar...';
+    auth.signInWithEmailAndPassword(email,senha).then(function(cred){
+        return db.collection('usuarios').doc(cred.user.uid).get();
+    }).then(function(doc){
+        if(!doc.exists){ mostrarMsg('Perfil não encontrado.','error'); document.getElementById('btnLogin').disabled=false; document.getElementById('btnLogin').textContent='Entrar'; return; }
+        var d=doc.data(); d.uid=doc.id;
+        if(d.bloqueado){ mostrarMsg('Conta bloqueada.','error'); auth.signOut(); document.getElementById('btnLogin').disabled=false; document.getElementById('btnLogin').textContent='Entrar'; return; }
+        usuarioAtual=d;
+        document.getElementById('btnLogin').disabled=false;
+        document.getElementById('btnLogin').textContent='Entrar';
+        abrirApp();
+    }).catch(function(err){
+        document.getElementById('btnLogin').disabled=false;
+        document.getElementById('btnLogin').textContent='Entrar';
+        var m='E-mail ou senha incorretos.';
+        if(err.code==='auth/wrong-password') m='Senha incorreta.';
+        else if(err.code==='auth/user-not-found') m='Utilizador não encontrado.';
+        mostrarMsg(m,'error');
+    });
+});
 
-    if (!email || !senha) { mostrarMsg('Preencha tudo.', 'error'); return; }
+function abrirApp(){
+    document.getElementById('headerLogo').textContent=usuarioAtual.nome.charAt(0).toUpperCase();
+    document.getElementById('headerNome').textContent=NOME_PLATAFORMA;
+    mostrarTela('telaApp');
+    carregarTudo(function(){ mudarTab('inicio'); });
+}
 
-    document.getElementById('btnLogin').disabled = true;
-    document.getElem
+function sair(){ if(!confirm('Terminar sessão?'))return; auth.signOut().then(function(){ usuarioAtual=null; usuarios=[]; depositos=[]; saques=[]; mostrarTela('telaAuth'); document.getElementById('formLogin').reset(); document.getElementById('formCadastro').reset(); }); }
+
+function mudarTab(t){
+    var items=document.querySelectorAll('.nav-item');
+    for(var i=0;i<items.length;i++) items[i].classList.toggle('active', items[i].getAttribute('data-tab')===t);
+    var c=document.getElementById('conteudoApp');
+    if(t==='inicio') c.innerHTML=renderInicio();
+    else if(t==='investir') c.innerHTML=renderInvestir();
+    else if(t==='depositar') c.innerHTML=renderDepositar();
+    else if(t==='sacar') c.innerHTML=renderSacar();
+    else if(t==='equipa') c.innerHTML=renderEquipa();
+    else if(t==='perfil') c.innerHTML=renderPerfil();
+    window.scrollTo(0,0);
+}
+
+function mostrarNotificacoes(){
+    var u=usuarioAtual; if(!u)return;
+    var conv=usuarios.filter(function(x){return x.convidadoPor===u.codigoConvite;}).length;
+    var pend=depositos.filter(function(d){return d.userId===u.uid&&d.status==='pendente';}).length;
+    alert('🔔 Notificações\n\n💰 Saldo: '+formatKz(u.saldo)+'\n📈 Plano: '+(u.planoAtivo?u.planoAtivo.nome:'Nenhum')+'\n👥 Convidados: '+conv+'\n⏳ Depósitos pendentes: '+pend);
+    }function renderInicio(){
+    var u=usuarioAtual;
+    var html='<div class="card card-gradient card-saldo"><div class="label">Saldo Disponível</div><div class="valor">'+formatKz(u.saldo)+'</div>';
+    html+='<div class="stats-grid">';
+    html+='<div class="stat-box"><div class="lbl">GANHOS HOJE</div><div class="val">'+formatKz(u.ganhosHoje||0)+'</div></div>';
+    html+='<div class="stat-box"><div class="lbl">TOTAL DEPOSITADO</div><div class="val">'+formatKz(u.totalDepositado||0)+'</div></div>';
+    html+='<div class="stat-box"><div class="lbl">TOTAL SACADO</div><div class="val">'+formatKz(u.totalSacado||0)+'</div></div>';
+    html+='<div class="stat-box"><div class="lbl">BÓNUS CONVITES</div><div class="val">'+formatKz(u.totalBonus||0)+'</div></div>';
+    html+='</div></div>';
+    html+='<div class="tarefa"><div class="ico">⏱️</div><div class="info"><h4>Tarefa diária</h4><p>'+(u.planoAtivo?'Plano ativo: '+u.planoAtivo.nome:'Ative um plano para começar.')+'</p></div>';
+    html+='<button onclick="mudarTab(\'investir\')">'+(u.planoAtivo?'Ver':'Investir')+'</button></div>';
+    html+='<div class="acoes-grid">';
+    html+='<div class="acao-btn" onclick="mudarTab(\'investir\')"><span class="ico">📈</span><p>Investir</p></div>';
+    html+='<div class="acao-btn" onclick="mudarTab(\'investir\')"><span class="ico">📅</span><p>Planos</p></div>';
+    html+='<div class="acao-btn" onclick="mudarTab(\'depositar\')"><span class="ico">💰</span><p>Depositar</p></div>';
+    html+='<div class="acao-btn" onclick="mudarTab(\'sacar\')"><span class="ico">🏧</span><p>Sacar</p></div>';
+    html+='<div class="acao-btn" onclick="mudarTab(\'equipa\')"><span class="ico">👥</span><p>Equipa</p></div>';
+    html+='<div class="acao-btn" onclick="verHistorico()"><span class="ico">📋</span><p>Histórico</p></div>';
+    html+='<div class="acao-btn" onclick="mudarTab(\'perfil\')"><span class="ico">🎁</span><p>Perfil</p></div>';
+    html+='<div class="acao-btn" onclick="sair()"><span class="ico">🚪</span><p>Sair</p></div>';
+    html+='</div>';
+    if(u.admin) html+=renderAdmin();
+    return html;
+}
+
+function renderAdmin(){
+    var pendDep=depositos.filter(function(d){return d.status==='pendente';});
+    var pendSaq=saques.filter(function(s){return s.status==='pendente';});
+    var totalDep=0, totalSaq=0;
+    depositos.forEach(function(d){ if(d.status==='aprovado') totalDep+=d.valor; });
+    saques.forEach(function(s){ if(s.status==='pago') totalSaq+=s.valor; });
+
+    var h='<h3 class="section-title">👑 Painel Administrador</h3>';
+    h+='<div class="notice">Controle total da plataforma.</div>';
+    h+='<div class="card"><div class="stats-grid" style="grid-template-columns:1fr 1fr">';
+    h+='<div style="background:#f7faff;border-radius:10px;padding:10px"><div style="font-size:11px;color:#5a6b85">USUÁRIOS</div><div style="font-size:20px;font-weight:800;color:#0a1f44">'+usuarios.length+'</div></div>';
+    h+='<div style="background:#f7faff;border-radius:10px;padding:10px"><div style="font-size:11px;color:#5a6b85">DEP. PENDENTES</div><div style="font-size:20px;font-weight:800;color:#1976d2">'+pendDep.length+'</div></div>';
+    h+='<div style="background:#f7faff;border-radius:10px;padding:10px"><div style="font-size:11px;color:#5a6b85">SAQ. PENDENTES</div><div style="font-size:20px;font-weight:800;color:#1976d2">'+pendSaq.length+'</div></div>';
+    h+='<div style="background:#f7faff;border-radius:10px;padding:10px"><div style="font-size:11px;color:#5a6b85">TOTAL DEP.</div><div style="font-size:16px;font-weight:800;color:#2e7d32">'+formatKz(totalDep)+'</div></div>';
+    h+='</div></div>';
+
+    h+='<div class="card"><h4 style="margin-bottom:10px;">🔍 Pesquisar usuário</h4>';
+    h+='<div class="form-group"><input type="text" id="adm_busca" placeholder="Nome, e-mail ou telefone" oninput="filtrarUsuarios()"></div>';
+    h+='<div id="adm_resultado"></div></div>';
+
+    h+='<div class="card"><h4 style="margin-bottom:10px;">💰 Ajustar saldo</h4>';
+    h+='<div class="form-group"><select id="adm_user"><option value="">-- Selecione --</option>';
+    usuarios.forEach(function(x){ h+='<option value="'+x.uid+'">'+x.nome+' ('+x.telefone+') — '+formatKz(x.saldo)+'</option>'; });
+    h+='</select></div>';
+    h+='<div class="form-group"><input type="number" id="adm_valor" placeholder="Ex: 5000 ou -2000"></div>';
+    h+='<button class="btn-principal" style="background:#e65100" onclick="admAjustarSaldo()">Aplicar</button></div>';
+
+    h+='<div class="card"><h4 style="margin-bottom:10px;">💳 Depósitos pendentes ('+pendDep.length+')</h4>';
+    if(pendDep.length===0) h+='<p style="color:#5a6b85;font-size:13px">Nenhum.</p>';
+    pendDep.forEach(function(d){
+        h+='<div class="card-mini"><div class="nome">'+d.userNome+'</div>';
+        h+='<div class="info">📱 '+d.userTelefone+'</div>';
+        h+='<div class="info">💵 Valor: <b>'+formatKz(d.valor)+'</b></div>';
+        h+='<div class="info">🏦 Conta: '+d.conta+'</div>';
+        h+='<div class="info">📅 '+d.data+'</div>';
+        if(d.comprovativo) h+='<img src="'+d.comprovativo+'" style="width:100%;border-radius:8px;margin-top:8px;max-height:200px;object-fit:contain;background:#fff">';
+        h+='<div class="acoes">';
+        h+='<button class="btn-aprovar" onclick="admAprovarDep(\''+d.docId+'\')">✅ Aprovar</button>';
+        h+='<button class="btn-rejeitar" onclick="admRejeitarDep(\''+d.docId+'\')">❌ Rejeitar</button>';
+        h+='</div></div>';
+    });
+    h+='</div>';
+
+    h+='<div class="card"><h4 style="margin-bottom:10px;">🏧 Saques pendentes ('+pendSaq.length+')</h4>';
+    if(pendSaq.length===0) h+='<p style="color:#5a6b85;font-size:13px">Nenhum.</p>';
+    pendSaq.forEach(function(s){
+        h+='<div class="card-mini"><div class="nome">'+s.userNome+'</div>';
+        h+='<div class="info">📱 '+s.userTelefone+'</div>';
+        h+='<div class="info">💵 Bruto: <b>'+formatKz(s.valor)+'</b> · Líquido: '+formatKz(s.liquido)+'</div>';
+        h+='<div class="info">📤 '+s.metodo+'</div>';
+        h+='<div class="info">🏦 Destino: '+s.conta+'</div>';
+        h+='<div class="info">📅 '+s.data+'</div>';
+        h+='<div class="acoes">';
+        h+='<button class="btn-aprovar" onclick="admAprovarSaq(\''+s.docId+'\')">✅ Pago</button>';
+        h+='<button class="btn-rejeitar" onclick="admRejeitarSaq(\''+s.docId+'\')">❌ Rejeitar</button>';
+        h+='</div></div>';
+    });
+    h+='</div>';
+    return h;
+    }function filtrarUsuarios(){
+    var q=document.getElementById('adm_busca').value.toLowerCase().trim();
+    var el=document.getElementById('adm_resultado');
+    if(!q){ el.innerHTML=''; return; }
+    var res=usuarios.filter(function(x){ return (x.nome||'').toLowerCase().indexOf(q)>-1 || (x.email||'').toLowerCase().indexOf(q)>-1 || (x.telefone||'').indexOf(q)>-1; });
+    if(res.length===0){ el.innerHTML='<p style="color:#5a6b85;font-size:13px">Nenhum resultado.</p>'; return; }
+    var h='';
+    res.forEach(function(x){
+        h+='<div class="card-mini"><div class="nome">'+x.nome+'</div>';
+        h+='<div class="info">📧 '+x.email+'</div>';
+        h+='<div class="info">📱 '+x.telefone+'</div>';
+        h+='<div class="info">💰 Saldo: '+formatKz(x.saldo)+'</div>';
+        h+='<div class="info">🎁 Código: '+x.codigoConvite+'</div>';
+        h+='<div class="info">👤 Convidado por: '+(x.convidadoPor||'—')+'</div>';
+        h+='<div class="info">📅 Registo: '+x.dataRegisto+'</div>';
+        h+='<div class="acoes">';
+        h+='<button class="btn-azul" onclick="admVerUser(\''+x.uid+'\')">👁️ Ver</button>';
+        h+='<button class="btn-cinza" onclick="admToggleBlock(\''+x.uid+'\')">'+(x.bloqueado?'🔓 Desbloquear':'🔒 Bloquear')+'</button>';
+        h+='<button class="btn-rejeitar" onclick="admEliminar(\''+x.uid+'\')">🗑️ Eliminar</button>';
+        h+='</div></div>';
+    });
+    el.innerHTML=h;
+}
+
+function admVerUser(uid){
+    var u=usuarios.filter(function(x){return x.uid===uid;})[0];
+    if(!u)return;
+    var deps=depositos.filter(function(d){return d.userId===uid;});
+    var saqs=saques.filter(function(s){return s.userId===uid;});
+    var conv=usuarios.filter(function(x){return x.convidadoPor===u.codigoConvite;});
+    var txt='👤 DADOS DO USUÁRIO\n\n';
+    txt+='Nome: '+u.nome+'\n';
+    txt+='E-mail: '+u.email+'\n';
+    txt+='Telefone: '+u.telefone+'\n';
+    txt+='Código de convite: '+u.codigoConvite+'\n';
+    txt+='Convidado por: '+(u.convidadoPor||'—')+'\n';
+    txt+='Registado em: '+u.dataRegisto+'\n';
+    txt+='Bloqueado: '+(u.bloqueado?'Sim':'Não')+'\n\n';
+    txt+='💰 Saldo: '+formatKz(u.saldo)+'\n';
+    txt+='📥 Total depositado: '+formatKz(u.totalDepositado||0)+'\n';
+    txt+='📤 Total sacado: '+formatKz(u.totalSacado||0)+'\n';
+    txt+='🎁 Bónus: '+formatKz(u.totalBonus||0)+'\n';
+    txt+='👥 Convidados: '+conv.length+'\n\n';
+    txt+='📋 Transações: '+(deps.length+saqs.length)+'\n';
+    deps.forEach(function(d){ txt+='  💰 '+formatKz(d.valor)+' — '+d.status+' ('+d.data+')\n'; });
+    saqs.forEach(function(s){ txt+='  🏧 '+formatKz(s.valor)+' — '+s.status+' ('+s.data+')\n'; });
+    alert(txt);
+}
+
+function admToggleBlock(uid){
+    var u=usuarios.filter(function(x){return x.uid===uid;})[0];
+    if(!u)return;
+    var novo=!u.bloqueado;
+    db.collection('usuarios').doc(uid).update({bloqueado:novo}).then(function(){
+        alert(novo?'🔒 Bloqueado.':'🔓 Desbloqueado.');
+        carregarTudo(function(){ mudarTab('inicio'); });
+    });
+}
+
+function admEliminar(uid){
+    if(!confirm('Eliminar usuário?'))return;
+    db.collection('usuarios').doc(uid).delete().then(function(){
+        alert('✅ Eliminado.');
+        carregarTudo(function(){ mudarTab('inicio'); });
+    });
+}
+
+function admAjustarSaldo(){
+    var uid=document.getElementById('adm_user').value;
+    var v=parseFloat(document.getElementById('adm_valor').value);
+    if(!uid||isNaN(v)||v===0){alert('Preencha os dados.');return;}
+    var u=usuarios.filter(function(x){return x.uid===uid;})[0];
+    if(!u)return;
+    var novo=u.saldo+v;
+    if(novo<0){alert('Saldo negativo não permitido.');return;}
+    db.collection('usuarios').doc(uid).update({saldo:novo}).then(function(){
+        alert('✅ Novo saldo: '+formatKz(novo));
+        carregarTudo(function(){mudarTab('inicio');});
+    });
+}
+
+function admAprovarDep(docId){
+    var d=depositos.filter(function(x){return x.docId===docId;})[0];
+    if(!d||d.status!=='pendente')return;
+    var u=usuarios.filter(function(x){return x.uid===d.userId;})[0];
+    if(!u)return;
+    var novoSaldo=u.saldo+d.valor;
+    var novoTotal=(u.totalDepositado||0)+d.valor;
+    db.collection('usuarios').doc(d.userId).update({saldo:novoSaldo,totalDepositado:novoTotal}).then(function(){
+        return db.collection('depositos').doc(docId).update({status:'aprovado',dataAprovacao:new Date().toLocaleString('pt-BR')});
+    }).then(function(){
+        if(u.convidadoPor){
+            db.collection('usuarios').where('codigoConvite','==',u.convidadoPor).get().then(function(s){
+                if(s.size>0){
+                    var patr=s.docs[0].data();
+                    var bonus=d.valor*BONUS_PCT;
+                    var novoBonus=(patr.totalBonus||0)+bonus;
+                    var novoSaldoPatr=(patr.saldo||0)+bonus;
+                    db.collection('usuarios').doc(s.docs[0].id).update({totalBonus:novoBonus,saldo:novoSaldoPatr});
+                }
+            }).catch(function(){});
+        }
+        alert('✅ Aprovado!');
+        carregarTudo(function(){mudarTab('inicio');});
+    });
+}
+
+function admRejeitarDep(docId){
+    db.collection('depositos').doc(docId).update({status:'rejeitado'}).then(function(){
+        alert('Rejeitado.');
+        carregarTudo(function(){mudarTab('inicio');});
+    });
+}
+
+function admAprovarSaq(docId){
+    db.collection('saques').doc(docId).update({status:'pago',dataPagamento:new Date().toLocaleString('pt-BR')}).then(function(){
+        alert('✅ Pago!');
+        carregarTudo(function(){mudarTab('inicio');});
+    });
+}
+
+function admRejeitarSaq(docId){
+    var s=saques.filter(function(x){return x.docId===docId;})[0];
+    if(!s)return;
+    var u=usuarios.filter(function(x){return x.uid===s.userId;})[0];
+    if(!u)return;
+    var novoSaldo=u.saldo+s.valor;
+    db.collection('usuarios').doc(s.userId).update({saldo:novoSaldo}).then(function(){
+        return db.collection('saques').doc(docId).update({status:'rejeitado'});
+    }).then(function(){
+        alert('Rejeitado. Valor devolvido.');
+        carregarTudo(function(){mudarTab('inicio');});
+    });
+}
+
+function renderInvestir(){
+    var u=usuarioAtual;
+    var h='<h3 class="section-title">📈 Planos de Investimento</h3>';
+    h+='<div class="card card-gradient" style="margin-bottom:16px"><div class="label">Saldo disponível</div><div class="valor">'+formatKz(u.saldo)+'</div></div>';
+    h+='<h3 class="section-title">💼 Planos de 30 dias</h3>';
+    PLANOS_30.forEach(function(p){
+        var pode=u.saldo>=p.valor;
+        h+='<div class="plano-card"><div class="plano-header"><div><div class="plano-nivel">30 DIAS</div><div class="plano-nome">'+p.nome+'</div></div><div class="plano-valor">'+formatKz(p.valor)+'<small>Investimento</small></div></div>';
+        h+='<div class="plano-stats"><div class="plano-stat"><div class="lbl">Diário</div><div class="val green">'+formatKz(p.diario)+'</div></div>';
+        h+='<div class="plano-stat"><div class="lbl">Prazo</div><div class="val">30 dias</div></div>';
+        h+='<div class="plano-stat"><div class="lbl">Total</div><div class="val">'+formatKz(p.total)+'</div></div></div>';
+        h+='<button class="plano-btn" '+(pode?'':'disabled')+' onclick="investir(\''+p.nome+'\','+p.valor+','+p.diario+',30)">'+(pode?'Investir Agora':'Saldo insuficiente')+'</button></div>';
+    });
+    h+='<h3 class="section-title">💼 Planos de 60 dias</h3>';
+    PLANOS_60.forEach(function(p){
+        var pode=u.saldo>=p.valor;
+        h+='<div class="plano-card"><div class="plano-header"><div><div class="plano-nivel">60 DIAS</div><div class="plano-nome">'+p.nome+'</div></div><div class="plano-valor">'+formatKz(p.valor)+'<small>Investimento</small></div></div>';
+        h+='<div class="plano-stats"><div class="plano-stat"><div class="lbl">Diário</div><div class="val green">'+formatKz(p.diario)+'</div></div>';
+        h+='<div class="plano-stat"><div class="lbl">Prazo</div><div class="val">60 dias</div></div>';
+        h+='<div class="plano-stat"><div class="lbl">Total</div><div class="val">'+formatKz(p.total)+'</div></div></div>';
+        h+='<button class="plano-btn" '+(pode?'':'disabled')+' onclick="investir(\''+p.nome+'\','+p.valor+','+p.diario+',60)">'+(pode?'Investir Agora':'Saldo insuficiente')+'</button></div>';
+    });
+    return h;
+}
+
+function investir(nome,valor,diario,dias){
+    var u=usuarioAtual;
+    if(u.saldo<valor){alert('Saldo insuficiente.');return;}
+    if(u.planoAtivo){alert('Você já tem um plano ativo.');return;}
+    if(!confirm('Confirmar?\n\nPlano: '+nome+'\nValor: '+formatKz(valor)+'\nDiário: '+formatKz(diario)+'\nPrazo: '+dias+' dias'))return;
+    var novoSaldo=u.saldo-valor;
+    var plano={nome:nome,valor:valor,diario:diario,prazo:dias,dataInicio:new Date().toLocaleDateString('pt-BR')};
+    db.collection('usuarios').doc(u.uid).update({saldo:novoSaldo,planoAtivo:plano}).then(function(){
+        usuarioAtual.saldo=novoSaldo; usuarioAtual.planoAtivo=plano;
+        alert('✅ Plano ativado!');
+        carregarTudo(function(){mudarTab('inicio');});
+    });
+    }function renderDepositar(){
+    var h='<h3 class="section-title">💰 Depositar</h3>';
+    h+='<div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px">💳 Pagamento por Referência</div>';
+    h+='<div class="pay-box"><div class="titulo">Entidade</div><div class="valor-grande valor-copiavel" onclick="copiar(\''+DADOS.entidade+'\')">'+DADOS.entidade+' 📋</div></div>';
+    h+='<div class="pay-box"><div class="titulo">Referência</div><div class="valor-grande valor-copiavel" onclick="copiar(\''+DADOS.referencia+'\')">'+DADOS.referencia+' 📋</div></div></div>';
+    h+='<div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px">🏦 Transferência Bancária</div>';
+    h+='<div class="pay-box"><div class="titulo">IBAN 1</div><div class="valor-grande valor-copiavel" style="font-size:13px" onclick="copiar(\''+DADOS.iban1+'\')">'+DADOS.iban1+' 📋</div></div>';
+    h+='<div class="pay-box"><div class="titulo">IBAN 2</div><div class="valor-grande valor-copiavel" style="font-size:13px" onclick="copiar(\''+DADOS.iban2+'\')">'+DADOS.iban2+' 📋</div></div>';
+    h+='<div class="pay-box"><div class="titulo">Titular</div><div style="font-size:15px;font-weight:700;color:#0a1f44">'+DADOS.titular+'</div></div></div>';
+    h+='<div class="notice">Depósitos aceitos: 6h00 às 23h45.</div>';
+    h+='<div class="card"><div style="font-size:14px;font-weight:700;margin-bottom:10px">📤 Enviar Comprovativo</div>';
+    h+='<div class="form-group"><label>Valor depositado (Kz)</label><input type="number" id="dep_valor" placeholder="Ex: 5000"></div>';
+    h+='<div class="form-group"><label>Nº/Conta usada</label><input type="text" id="dep_conta" placeholder="Seu número"></div>';
+    h+='<div class="form-group"><label>Comprovativo</label><div class="upload-area" onclick="document.getElementById(\'dep_file\').click()"><div class="ico">⬆️</div><p id="dep_file_nome">Toque para enviar imagem</p></div>';
+    h+='<input type="file" id="dep_file" accept="image/*" style="display:none" onchange="mostrarFicheiro(this,\'dep_file_nome\')"></div>';
+    h+='<button class="btn-principal" onclick="enviarDeposito()">Enviar para Análise</button></div>';
+    return h;
+}
+
+function mostrarFicheiro(input,id){ if(input.files&&input.files[0]) document.getElementById(id).textContent='✅ '+input.files[0].name; }
+
+function enviarDeposito(){
+    var u=usuarioAtual;
+    var valor=parseFloat(document.getElementById('dep_valor').value);
+    var conta=document.getElementById('dep_conta').value.trim();
+    var file=document.getElementById('dep_file').files[0];
+    var h=new Date().getHours();
+    if(h<HORA_DEP_INICIO||h>=HORA_DEP_FIM){alert('Depósitos aceitos das 6h00 às 23h45.');return;}
+    if(isNaN(valor)||valor<MIN_DEPOSITO){alert('Valor mínimo: '+formatKz(MIN_DEPOSITO));return;}
+    if(!conta){alert('Informe a conta usada.');return;}
+    if(!file){alert('Envie o comprovativo.');return;}
+    var reader=new FileReader();
+    reader.onload=function(){
+        var comp=reader.result;
+        if(comp.length>900000){alert('Imagem muito grande.');return;}
+        db.collection('depositos').add({
+            userId:u.uid,userNome:u.nome,userTelefone:u.telefone,
+            valor:valor,conta:conta,comprovativo:comp,
+            data:new Date().toLocaleString('pt-BR'),status:'pendente',
+            timestamp:firebase.firestore.FieldValue.serverTimestamp()
+        }).then(function(){
+            alert('✅ Enviado! Aguarde aprovação.');
+            carregarTudo(function(){mudarTab('inicio');});
+        });
+    };
+    reader.readAsDataURL(file);
+}
+
+function renderSacar(){
+    var u=usuarioAtual;
+    var h=new Date().getHours();
+    var dentro=h>=HORA_SAQ_INICIO&&h<HORA_SAQ_FIM;
+    var html='<h3 class="section-title">🏧 Sacar</h3>';
+    html+='<div class="card card-gradient"><div class="label">Saldo disponível</div><div class="valor">'+formatKz(u.saldo)+'</div></div>';
+    html+='<div class="card"><div style="font-size:13px;margin-bottom:6px">Mínimo: <b>'+formatKz(MIN_SAQUE)+'</b></div>';
+    html+='<div style="font-size:13px;margin-bottom:6px">Taxa: <b>8%</b></div>';
+    html+='<div style="font-size:13px;margin-bottom:6px">Horário: <b>10h30 às 16h00</b></div>';
+    html+='<div style="font-size:13px;color:'+(dentro?'#2e7d32':'#e65100')+';font-weight:600">'+(dentro?'✅ Dentro do horário':'⚠️ Fora do horário')+'</div></div>';
+    html+='<div class="card"><div class="form-group"><label>Valor bruto (Kz)</label><input type="number" id="saq_valor" placeholder="Ex: 5000"></div>';
+    html+='<div class="form-group"><label>Método de levantamento</label><select id="saq_metodo" onchange="mudarMetodoSaque()"><option value="referencia">Pagamento por Referência (telefone)</option><option value="iban">Transferência Bancária (IBAN)</option></select></div>';
+    html+='<div id="saq_campo"></div>';
+    html+='<button class="btn-principal" '+(dentro?'':'disabled')+' onclick="enviarSaque()">Solicitar Saque</button></div>';
+    setTimeout(mudarMetodoSaque,50);
+    return html;
+}
+
+function mudarMetodoSaque(){
+    var met=document.getElementById('saq_metodo');
+    if(!met)return;
+    var el=document.getElementById('saq_campo');
+    if(met.value==='referencia'){
+        el.innerHTML='<div class="form-group"><label>Nº de telefone</label><input type="tel" id="saq_conta" placeholder="9XX XXX XXX"></div>';
+    } else {
+        el.innerHTML='<div class="form-group"><label>IBAN de destino</label><input type="text" id="saq_conta" placeholder="AO06..."></div>';
+    }
+}
+
+function enviarSaque(){
+    var u=usuarioAtual;
+    var valor=parseFloat(document.getElementById('saq_valor').value);
+    var metodo=document.getElementById('saq_metodo').value;
+    var conta=document.getElementById('saq_conta').value.trim();
+    if(isNaN(valor)||valor<MIN_SAQUE){alert('Valor mínimo: '+formatKz(MIN_SAQUE));return;}
+    if(valor>u.saldo){alert('Saldo insuficiente.');return;}
+    if(!conta){alert('Preencha a conta.');return;}
+    var taxa=valor*TAXA_SAQUE;
+    var liquido=valor-taxa;
+    var metNome=metodo==='referencia'?'Referência (telefone)':'IBAN';
+    if(!confirm('Bruto: '+formatKz(valor)+'\nTaxa 8%: '+formatKz(taxa)+'\nLíquido: '+formatKz(liquido)+'\nMétodo: '+metNome+'\n\nConfirmar?'))return;
+    var novoSaldo=u.saldo-valor;
+    var novoSacado=(u.totalSacado||0)+valor;
+    db.collection('usuarios').doc(u.uid).update({saldo:novoSaldo,totalSacado:novoSacado}).then(function(){
+        return db.collection('saques').add({
+            userId:u.uid,userNome:u.nome,userTelefone:u.telefone,
+            valor:valor,taxa:taxa,liquido:liquido,
+            metodo:metNome,conta:conta,
+            data:new Date().toLocaleString('pt-BR'),status:'pendente',
+            timestamp:firebase.firestore.FieldValue.serverTimestamp()
+        });
+    }).then(function(){
+        usuarioAtual.saldo=novoSaldo;
+        alert('✅ Solicitado!');
+        carregarTudo(function(){mudarTab('inicio');});
+    });
+    }function renderEquipa(){
+    var u=usuarioAtual;
+    var conv=usuarios.filter(function(x){return x.convidadoPor===u.codigoConvite;});
+    var h='<h3 class="section-title">👥 Minha Equipa</h3>';
+    h+='<div class="card card-gradient"><div class="label">Total de convidados</div><div class="valor">'+conv.length+'</div></div>';
+    h+='<div class="card"><div style="font-size:13px;margin-bottom:8px">🔗 Link único de convite:</div>';
+    h+='<div style="background:#f7faff;padding:10px;border-radius:8px;font-size:11px;word-break:break-all;color:#1976d2">'+u.linkConvite+'</div>';
+    h+='<button class="btn-principal" style="margin-top:10px;background:#25D366" onclick="copiar(\''+u.linkConvite+'\')">📋 Copiar Link</button>';
+    h+='<button class="btn-principal" style="margin-top:8px;background:#25D366" onclick="partilharWA(\''+u.linkConvite+'\')">💬 Partilhar WhatsApp</button></div>';
+    h+='<div class="card"><div style="font-size:13px;margin-bottom:8px">🎁 Código: <b>'+u.codigoConvite+'</b></div>';
+    h+='<div style="font-size:12px;color:#5a6b85">Ganhe <b>5%</b> de bónus quando o seu convidado investir.</div></div>';
+    if(conv.length>0){
+        h+='<h3 class="section-title">Convidados</h3>';
+        conv.forEach(function(c){
+            h+='<div class="card" style="padding:12px"><div style="font-weight:600">'+c.nome+'</div><div style="font-size:12px;color:#5a6b85">'+c.telefone+' · '+c.dataRegisto+'</div></div>';
+        });
+    }
+    return h;
+}
+
+function partilharWA(link){
+    var m='🚀 Junta-te a mim na InvestProAO!\n\n💰 Ganha dinheiro investindo.\n📈 Retornos diários garantidos.\n\n🔗 '+link;
+    window.open('https://wa.me/?text='+encodeURIComponent(m),'_blank');
+}
+
+function renderPerfil(){
+    var u=usuarioAtual;
+    var ini=u.nome.charAt(0).toUpperCase();
+    var h='<div class="perfil-header"><div class="perfil-avatar">'+ini+'</div>';
+    h+='<div class="perfil-nome">'+u.nome+'</div><div class="perfil-codigo">'+u.codigoConvite+'</div></div>';
+    h+='<div class="card" style="padding:0">';
+    h+='<div class="perfil-linha"><span class="lbl">E-mail</span><span class="val">'+u.email+'</span></div>';
+    h+='<div class="perfil-linha"><span class="lbl">Telefone</span><span class="val">'+u.telefone+'</span></div>';
+    h+='<div class="perfil-linha"><span class="lbl">Código</span><span class="val">'+u.codigoConvite+'</span></div>';
+    h+='<div class="perfil-linha"><span class="lbl">Estado</span><span class="val" style="color:#2e7d32">'+(u.bloqueado?'Bloqueado':'Ativo')+'</span></div></div>';
+    h+='<div style="margin-top:16px">';
+    h+='<a href="'+WHATSAPP_GRUPO+'" target="_blank" style="text-decoration:none"><button class="btn-full btn-green">💬 Entrar no Grupo WhatsApp</button></a>';
+    h+='<button class="btn-full btn-blue" onclick="sair()">Terminar Sessão</button></div>';
+    return h;
+}
+
+function verHistorico(){
+    var u=usuarioAtual;
+    var deps=depositos.filter(function(d){return d.userId===u.uid;});
+    var saqs=saques.filter(function(s){return s.userId===u.uid;});
+    var t='📋 Histórico\n\n';
+    if(deps.length===0&&saqs.length===0) t+='Nenhuma transação.';
+    deps.forEach(function(d){ t+='💰 Depósito: '+formatKz(d.valor)+' — '+d.status+' ('+d.data+')\n'; });
+    saqs.forEach(function(s){ t+='🏧 Saque: '+formatKz(s.valor)+' — '+s.status+' ('+s.data+')\n'; });
+    alert(t);
+}
+
+auth.onAuthStateChanged(function(user){
+    if(user){
+        db.collection('usuarios').doc(user.uid).get().then(function(doc){
+            if(doc.exists){
+                var d=doc.data(); d.uid=doc.id;
+                usuarioAtual=d;
+                abrirApp();
+            } else { mostrarTela('telaAuth'); }
+        }).catch(function(){ mostrarTela('telaAuth'); });
+    } else {
+        mostrarTela('telaAuth');
+        try {
+            var p=new URLSearchParams(window.location.search);
+            var ref=p.get('ref');
+            if(ref){
+                setTimeout(function(){ var c=document.getElementById('r_code'); if(c) c.value=ref; },300);
+            }
+        } catch(e){}
+    }
+});
+</script>
+</body>
+</html>
